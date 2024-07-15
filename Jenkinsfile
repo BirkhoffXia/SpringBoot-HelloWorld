@@ -43,11 +43,9 @@ docker push ${harborAddress}/${harborRepo}/${JOB_NAME}:${tag}'''
         }    
         stage('[6.6]-通过Publish Over SSH通知目标服务器') {
             steps {
-		sshPublisher(publishers: [sshPublisherDesc(configName: 'test', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''pwd
-cd /usr/local/running/
-bash deploy.sh $harborAddres $harborRepo ${JOB_NAME} $tag $host_port  $container_port 
-''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-                echo '[6]-通过Publish Over SSH通知目标服务器 - SUCCESS'
+		sshPublisher(publishers: [sshPublisherDesc(configName: 'test', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''deploy.sh $harborAddress $harborRepo ${JOB_NAME} $tag $host_port  $container_port 
+''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+		echo '[6]-通过Publish Over SSH通知目标服务器 - SUCCESS'
             }
         }     
     }
