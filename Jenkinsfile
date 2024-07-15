@@ -19,6 +19,7 @@ pipeline {
         }
         stage('[3]-通过SonarQube代码质量检测') {
             steps {
+		sh '/usr/local/sonar-scanner/bin/sonar-scanner -Dsonar.projectname=${JOB_NAME} -Dsonar.projectKey=${JOB_NAME} -Dsonar.java.binaries=./target -Dsonar.source=./ -Dsonar.login=admin -Dsonar.password=sheca '
                 echo '[3]-通过SonarQube代码质量检测 - SUCCESS'
             }
         }
