@@ -25,7 +25,9 @@ pipeline {
         }
         stage('[4]-通过Docker制作自定义镜像') {
             steps {
-                echo '[4]-通过Docker制作自定义镜像 - SUCCESS'
+		sh '''mv ./target/*.jar ./deploy
+docker build -t ${JOB_NAME}:${tag} ./deploy/'''
+		echo '[4]-通过Docker制作自定义镜像 - SUCCESS'
             }
         }
         stage('[5]-将自定义镜像推送到Aliyun') {
