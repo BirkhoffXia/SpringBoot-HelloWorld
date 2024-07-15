@@ -13,6 +13,7 @@ pipeline {
         }
         stage('[2]-通过MAVEN构建项目') {
             steps {
+		sh '/usr/local/mvn clean package -DskipTests'    
                 echo '[2]-通过MAVEN构建项目 - SUCCESS'
             }
         }
