@@ -2,7 +2,10 @@ pipeline {
     agent any
 
 		environment {
-			key = 'value'
+			harborUser = '夏恺晟'
+			harborPaswd = 'xks940319'
+			harborAddress = 'registry.cn-hangzhou.aliyuncs.com'
+			harborRepo = 'birkhoff'
 		}
     stages {
         stage('[1]-拉去Git仓库代码') {
@@ -32,6 +35,9 @@ docker build -t ${JOB_NAME}:${tag} ./deploy/'''
         }
         stage('[5]-将自定义镜像推送到Aliyun') {
             steps {
+		    sh '''docker login --username=${harborUser} --password=${harborPaswd} ${harborAddress}
+docker tag ${JOB_NAME}:${tag}  ${harborAddress}/${harborRepo}/${JOB_NAME}:${tag}
+docker push ${harborAddress}/${harborRepo}/${JOB_NAME}:${tag}'''
                 echo '[5]-将自定义镜像推送到Aliyun - SUCCESS'
             }
         }    
