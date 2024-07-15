@@ -54,7 +54,7 @@ docker push ${harborAddress}/${harborRepo}/${JOB_NAME}:${tag}'''
 				robot: 'Jenkins-DingDing',
 				type: 'MARKDOWN',
 				title: "success: ${JOB_NAME}",
-				text: ["- 成功构建: ${JOB_NAME}! \n-版本: ${tag} \n-持续时间: ${currentBuild.durationString}"]
+				text: ["- 成功构建: ${JOB_NAME}! \n- 版本: ${tag} \n- 持续时间: ${currentBuild.durationString}"]
 			)
 		}
 		failure{
