@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage('[1]-拉去Git仓库代码') {
             steps {
+		checkout scmGit(branches: [[name: '${tag}']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/BirkhoffXia/SpringBoot-HelloWorld.git']])
                 echo '[1]-拉去Git仓库代码 - SUCCESS'
             }
         }
@@ -30,7 +31,7 @@ pipeline {
                 echo '[5]-将自定义镜像推送到Aliyun - SUCCESS'
             }
         }    
-        stage('[6]-通过Publish Over SSH通知目标服务器') {
+        stage('[6.6]-通过Publish Over SSH通知目标服务器') {
             steps {
                 echo '[6]-通过Publish Over SSH通知目标服务器 - SUCCESS'
             }
