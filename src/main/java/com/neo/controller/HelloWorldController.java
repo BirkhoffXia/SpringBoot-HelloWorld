@@ -8,16 +8,16 @@ public class HelloWorldController {
 
     @RequestMapping("/")
     public String index() {
-        return "Hello Spring Boot v3.0.0!";
+        return "Hello Spring Boot v1.0.0!";
     }
 	
     @RequestMapping("/hello")
     public String hello() {
-        return "Hello World from MageEdu.com v3.0.0!";
+        return "Hello World from MageEdu.com v1.0.0!";
     }
 	
     @RequestMapping("/version")
     public String version() {
-        return "version v3.0.0!";
+        return "version v1.0.0!";
     }
 }
