@@ -2,8 +2,8 @@ pipeline {
     agent any
 
 		environment {
-			harborUser = '夏恺晟'
-			harborPaswd = 'xks940319'
+			harborUser = '*******'
+			harborPaswd = '********'
 			harborAddress = 'registry.cn-hangzhou.aliyuncs.com'
 			harborRepo = 'birkhoff'
 		}
